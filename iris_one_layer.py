@@ -33,14 +33,12 @@ y_ = tf.placeholder("float", [None, 3])
 W = tf.Variable(np.float32(np.random.rand(4, 3))*0.1)
 b = tf.Variable(np.float32(np.random.rand(3))*0.1)
 
-#y = tf.nn.softmax(tf.sigmoid(tf.matmul(x, W) + b))
 y = tf.nn.softmax((tf.sigmoid(tf.matmul(x, W) + b)))
 
 
 #cross_entropy = tf.reduce_sum(tf.square(y_ - y))
 cross_entropy = -tf.reduce_sum(y_*tf.log(y))
 
-#train = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
 train = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
 
 init = tf.initialize_all_variables()
