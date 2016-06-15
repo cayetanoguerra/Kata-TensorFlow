@@ -37,7 +37,6 @@ W_output = tf.Variable(np.float32(np.random.rand(5, 3))*0.01)
 b_output = tf.Variable(np.float32(np.random.rand(3))*0.01)
 
 y_hidden = tf.sigmoid(tf.matmul(x, W_hidden) + b_hidden)
-#y = tf.nn.softmax(tf.sigmoid(tf.matmul(y_hidden, W_output) + b_output))
 y = tf.nn.softmax(tf.matmul(y_hidden, W_output) + b_output)
 
 
@@ -56,9 +55,9 @@ print "----------------------"
 print "   Start training...  "
 print "----------------------"
 
-batch_size = 10
+batch_size = 1
 
-for step in xrange(10000):
+for step in xrange(1000):
     for jj in xrange(len(x_data) / batch_size):
         batch_xs = x_data[jj*batch_size : jj*batch_size+batch_size]
         batch_ys = y_data[jj*batch_size : jj*batch_size+batch_size]
